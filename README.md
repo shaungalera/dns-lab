@@ -48,4 +48,62 @@ This lab focuses on DNS configuration and testing using A-Records, Local DNS Cac
 
 ![image](https://github.com/user-attachments/assets/d8e61c9b-30a6-40f3-99e6-0619363cd9a7)
 
+<h2>Local DNS Cache Exercise</h2>
 
+**1.) Modify the A-Record**<br>
+.On DC-1, change the mainframe A-Record to point to 8.8.8.8.<br>
+
+![image](https://github.com/user-attachments/assets/358d57c6-9719-4eb5-aebe-fba6404ed81a)
+
+**2.) Ping "mainframe" from Client-1**:<br />
+
+.On Client-1, run: ping mainframe<br>
+.Observe that the ping still resolves to the old address (cached locally).<br>
+
+**3.) Check the Local DNS Cache**:<br />
+
+.On Client-1, display the DNS cache using: ipconfig /displaydns<br>
+.Observe the cached record for mainframe.<br>
+
+**4.) Flush the DNS Cache**:<br />
+
+.Clear the local DNS cache using (you may need to run powershell as administrator): ipconfig /flushdns<br>
+
+**5.) Verify Cache Clearing**:<br />
+
+.Confirm the cache is empty by running: ipconfig /displaydns<br>
+
+**6.) Verify the Updated A-Record**:<br />
+
+.Attempt to ping mainframe again: ping mainframe<br>
+.Observe that it now resolves to the updated address (8.8.8.8).<br>
+
+![image](https://github.com/user-attachments/assets/275d0899-fda2-4348-b396-d1eeaed46232)
+
+<h2>CNAME Record Exercise</h2>
+
+**1.) Create a CNAME Record**:</br>
+.On DC-1, open the DNS Manager.<br>
+.Navigate to the appropriate forward lookup zone.<br>
+.**Add a CNAME Record**:<br>
+*Alias*: bubble.<br>
+*Points to*: www.google.com.<br>
+
+![image](https://github.com/user-attachments/assets/e508c921-d71c-411f-b220-f34fd22095d5)
+
+**2.) Test the CNAME Record**:<br />
+
+.On Client-1, ping search: ping search<br>
+.Observe the results of the CNAME record resolution.<br>
+
+**3.) Verify Using nslookup**:<br />
+
+.On Client-1, run: nslookup search<br>
+.Observe the results, ensuring the alias resolves to www.google.com.<br>
+
+
+![image](https://github.com/user-attachments/assets/f86bed4f-9ebd-48b1-83cd-1a2c77b40faf)
+
+<h2>Conclusion</h2>
+
+Congratulations! You have successfully completed the DNS exercises for A-Records, Local DNS Cache, and CNAME Records.
