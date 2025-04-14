@@ -21,7 +21,7 @@ This lab focuses on DNS configuration and testing using A-Records, Local DNS Cac
 **1.) Connect to DC-1**:<br />
 .Log into DC-1 using the domain admin account: mydomain.com\jane_admin.<br>
 **2.) Connect to Client-1**:<br />
-.Log into Client-1 as an admin: mydomain\jane_admin.
+.Log into Client-1 as an admin: mydomain\jane_admin.<br>
 **3.) Verify that "mainframe" is Unreachable**:<br />
 .On Client-1, open the Command Prompt and run:<br>
  "ping mainframe"<br>
